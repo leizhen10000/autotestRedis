@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="testAll">
+    <test name="depend">
+        <classes>
+            <class name="com.dianwoba.cn.testng.depend.TestApp"/>
+            <class name="com.dianwoba.cn.testng.depend.TestDatabase"/>
+            <class name="com.dianwoba.cn.testng.depend.TestServer"/>
+        </classes>
+    </test>
+
+    <test name="example">
+        <parameter name="dbconfig" value="properties/jdbc.properties"/>
+        <parameter name="poolsize" value="10"/>
+        <classes>
+            <class name="com.dianwoba.cn.testng.depend.TestParameterXML"/>
+        </classes>
+    </test>
+
+    <test name="dataProvider">
+        <groups>
+            <run>
+                <exclude name="groupA"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.dianwoba.cn.testng.depend.TestParameterDataProvider4"/>
+        </classes>
+    </test>
+
+    <test name="method">
+        <classes>
+            <class name="com.dianwoba.cn.testng.depend.TestParameterDataProvider3">
+                <methods>
+                    <include name="test1"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="char">
+        <classes>
+            <class name="com.dianwoba.cn.testng.depend.CharUtilsTest"/>
+        </classes>
+    </test>
+</suite>

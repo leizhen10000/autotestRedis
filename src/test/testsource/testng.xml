@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--<suite name="My test suite">-->
+<!--<test name="First test">-->
+<!--<classes>-->
+<!--<class name="com.dianwoba.cn.StringUtilsTest"/>-->
+<!--</classes>-->
+<!--</test>-->
+<!--</suite>-->
+<!-- @BeforeSuite-->
+<suite name="TestAll">
+
+    <!-- @BeforeTest-->
+    <test name="case1">
+        <classes>
+            <class name="com.dianwoba.cn.DBConfig"/>
+            <class name="com.dianwoba.cn.TestDBConnection"/>
+        </classes>
+    </test>
+    <!-- @AfterTest-->
+
+    <!-- @BeforeTest-->
+    <test name="case2">
+        <classes>
+            <class name="com.dianwoba.cn.TestDBConnection"/>
+        </classes>
+    </test>
+    <!-- @AfterTest-->
+
+    <test name="exceptionCase">
+        <classes>
+            <class name="com.dianwoba.cn.TestRunTime"/>
+        </classes>
+    </test>
+
+    <test name="testTimeout">
+        <classes>
+            <class name="com.dianwoba.cn.TestTimeout"/>
+        </classes>
+    </test>
+
+    <test name="final">
+        <classes>
+            <class name="com.dianwoba.cn.TestSelenium"/>
+            <class name="com.dianwoba.cn.TestGroup"/>
+        </classes>
+    </test>
+
+    <test name="selenium">
+        <groups>
+            <run>
+                <include name="selenium-test"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.dianwoba.cn.TestSelenium"/>
+            <class name="com.dianwoba.cn.TestGroup"/>
+        </classes>
+    </test>
+
+    <test name="order">
+        <classes>
+            <class name="com.dianwoba.cn.suitecate.TestConfig"/>
+            <class name="com.dianwoba.cn.suitecate.TestOrder"/>
+        </classes>
+    </test>
+
+    <test name="database">
+        <classes>
+            <class name="com.dianwoba.cn.suitecate.TestConfig"/>
+            <class name="com.dianwoba.cn.suitecate.TestDatabase"/>
+        </classes>
+    </test>
+
+    <test name="order1">
+        <packages>
+            <package name="com.dianwoba.cn.suitecate.*"/>
+        </packages>
+    </test>
+
+    <test name="order2">
+        <classes>
+            <class name="com.dianwoba.cn.suitecate.TestConfig"/>
+            <class name="com.dianwoba.cn.suitecate.TestOrder">
+                <methods>
+                    <include name="testMakeOrder"/>
+                    <include name="testMakeEmptyOrder"/>
+                    <exclude name="testUpdateOrder"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="order3">
+        <groups>
+            <run>
+                <exclude name="brokenTests"/>
+                <include name="db"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.dianwoba.cn.suitecate.TestDatabase"/>
+        </classes>
+    </test>
+</suite>
+        <!-- @AfterSuite-->
